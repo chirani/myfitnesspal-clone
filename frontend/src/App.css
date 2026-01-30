@@ -1,1 +1,6 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+.input {
+  @apply w-full;
+}

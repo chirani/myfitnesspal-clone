@@ -3,12 +3,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-export const Route = createFileRoute("/signup")({
+export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
 export const signupSchema = z.object({
-  username: z.string().min(3, "Username must be at least 3 characters"),
   email: z.email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
@@ -32,14 +31,6 @@ function RouteComponent() {
       className="mx-auto w-96 flex flex-col gap-3 mt-16"
       noValidate
     >
-      <label htmlFor="username" className="text-sm">
-        Username
-        <input id="username" className="input" {...register("username")} />
-        {errors.username && (
-          <p className="text-error">{errors.username.message}</p>
-        )}
-      </label>
-
       <label htmlFor="email" className="text-sm">
         Email
         <input
