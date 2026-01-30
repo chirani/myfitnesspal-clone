@@ -1,9 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { useLogin } from "../hooks/auth";
 
 export const Route = createFileRoute("/login")({
+  beforeLoad: ({ context }) => {
+    const userId = context.session?.user.id;
+    if (userId) {
+      throw redirect({ to: "/" });
+    }
+  },
   component: RouteComponent,
 });
 
@@ -18,12 +25,15 @@ function RouteComponent() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(signupSchema),
   });
+  const { mutate: login, isPending } = useLogin();
 
-  const onSubmit = async (_data: LoginFormValues) => {};
+  const onSubmit = async (data: LoginFormValues) => {
+    login(data);
+  };
 
   return (
     <form
@@ -54,8 +64,8 @@ function RouteComponent() {
           <p className="text-error">{errors.password.message}</p>
         )}
       </label>
-      <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Signing up in…" : "Signup"}
+      <button className="btn btn-primary" type="submit" disabled={isPending}>
+        {isPending ? "Signing up in…" : "Signup"}
       </button>
     </form>
   );

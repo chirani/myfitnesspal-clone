@@ -1,5 +1,6 @@
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import "../App.css";
+import { authClient } from "../auth";
 
 const RootLayout = () => (
   <>
@@ -29,4 +30,12 @@ const Navbar = () => {
     </div>
   );
 };
-export const Route = createRootRoute({ component: RootLayout });
+
+export const Route = createRootRoute({
+  component: RootLayout,
+  beforeLoad: async () => {
+    const res = await authClient.getSession();
+
+    return { session: res?.data };
+  },
+});

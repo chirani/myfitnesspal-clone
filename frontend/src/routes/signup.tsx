@@ -1,16 +1,18 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { signupSchema } from "../services/auth";
+import { useSignup } from "../hooks/auth";
 
 export const Route = createFileRoute("/signup")({
+  beforeLoad: ({ context }) => {
+    const userId = context.session?.user.id;
+    if (userId) {
+      throw redirect({ to: "/" });
+    }
+  },
   component: RouteComponent,
-});
-
-export const signupSchema = z.object({
-  username: z.string().min(3, "Username must be at least 3 characters"),
-  email: z.email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 export type LoginFormValues = z.infer<typeof signupSchema>;
@@ -23,8 +25,10 @@ function RouteComponent() {
   } = useForm<LoginFormValues>({
     resolver: zodResolver(signupSchema),
   });
-
-  const onSubmit = async (_data: LoginFormValues) => {};
+  const { mutate: signup } = useSignup();
+  const onSubmit = async (_data: LoginFormValues) => {
+    signup(_data);
+  };
 
   return (
     <form
