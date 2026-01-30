@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { auth } from "./auth";
+import { auth } from "./auth/index";
 import { serve } from "@hono/node-server";
 import { cors } from "hono/cors";
  
@@ -17,8 +17,13 @@ app.use(
 	}),
 );
 
+const port = Number(process.env.PORT) || 8080;
+
+app.get("/", (c) => c.text("Hello Bun"));
+
 app.on(["POST", "GET"], "/api/auth/*", (c) => {
 	return auth.handler(c.req.raw);
 });
 
-serve(app);
+serve({fetch:app.fetch, port});
+console.log(`Server running on http://localhost:${port}`);
