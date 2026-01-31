@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import { signupSchema } from "../services/auth";
 import { useSignup } from "../hooks/auth";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/signup")({
   beforeLoad: ({ context }) => {
@@ -25,7 +26,14 @@ function RouteComponent() {
   } = useForm<LoginFormValues>({
     resolver: zodResolver(signupSchema),
   });
-  const { mutate: signup } = useSignup();
+  const { mutate: signup, isSuccess } = useSignup();
+
+  useEffect(() => {
+    if (isSuccess) {
+      window.location.reload();
+    }
+  }, [isSuccess]);
+
   const onSubmit = async (_data: LoginFormValues) => {
     signup(_data);
   };
@@ -38,10 +46,8 @@ function RouteComponent() {
     >
       <label htmlFor="username" className="text-sm">
         Username
-        <input id="username" className="input" {...register("username")} />
-        {errors.username && (
-          <p className="text-error">{errors.username.message}</p>
-        )}
+        <input id="username" className="input" {...register("name")} />
+        {errors.name && <p className="text-error">{errors.name.message}</p>}
       </label>
 
       <label htmlFor="email" className="text-sm">

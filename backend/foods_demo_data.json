@@ -1,0 +1,142 @@
+[
+    {
+        "name": "Chicken Breast",
+        "caloriesPer100g": 165,
+        "proteinPer100g": 31,
+        "carbsPer100g": 0,
+        "fatsPer100g": 3.6
+    },
+    {
+        "name": "Salmon",
+        "caloriesPer100g": 208,
+        "proteinPer100g": 20,
+        "carbsPer100g": 0,
+        "fatsPer100g": 13
+    },
+    {
+        "name": "Egg",
+        "caloriesPer100g": 155,
+        "proteinPer100g": 13,
+        "carbsPer100g": 1.1,
+        "fatsPer100g": 11
+    },
+    {
+        "name": "Beef Steak",
+        "caloriesPer100g": 250,
+        "proteinPer100g": 26,
+        "carbsPer100g": 0,
+        "fatsPer100g": 17
+    },
+    {
+        "name": "Tuna (canned in water)",
+        "caloriesPer100g": 116,
+        "proteinPer100g": 26,
+        "carbsPer100g": 0,
+        "fatsPer100g": 1
+    },
+    {
+        "name": "Greek Yogurt (plain)",
+        "caloriesPer100g": 59,
+        "proteinPer100g": 10,
+        "carbsPer100g": 3.6,
+        "fatsPer100g": 0.4
+    },
+    {
+        "name": "Milk (whole)",
+        "caloriesPer100g": 61,
+        "proteinPer100g": 3.2,
+        "carbsPer100g": 4.8,
+        "fatsPer100g": 3.3
+    },
+    {
+        "name": "Cheddar Cheese",
+        "caloriesPer100g": 403,
+        "proteinPer100g": 25,
+        "carbsPer100g": 1.3,
+        "fatsPer100g": 33
+    },
+    {
+        "name": "Rice (cooked)",
+        "caloriesPer100g": 130,
+        "proteinPer100g": 2.7,
+        "carbsPer100g": 28,
+        "fatsPer100g": 0.3
+    },
+    {
+        "name": "Pasta (cooked)",
+        "caloriesPer100g": 131,
+        "proteinPer100g": 5,
+        "carbsPer100g": 25,
+        "fatsPer100g": 1.1
+    },
+    {
+        "name": "Bread (white)",
+        "caloriesPer100g": 265,
+        "proteinPer100g": 9,
+        "carbsPer100g": 49,
+        "fatsPer100g": 3.2
+    },
+    {
+        "name": "Potato (boiled)",
+        "caloriesPer100g": 87,
+        "proteinPer100g": 1.9,
+        "carbsPer100g": 20,
+        "fatsPer100g": 0.1
+    },
+    {
+        "name": "Banana",
+        "caloriesPer100g": 89,
+        "proteinPer100g": 1.1,
+        "carbsPer100g": 23,
+        "fatsPer100g": 0.3
+    },
+    {
+        "name": "Apple",
+        "caloriesPer100g": 52,
+        "proteinPer100g": 0.3,
+        "carbsPer100g": 14,
+        "fatsPer100g": 0.2
+    },
+    {
+        "name": "Orange",
+        "caloriesPer100g": 47,
+        "proteinPer100g": 0.9,
+        "carbsPer100g": 12,
+        "fatsPer100g": 0.1
+    },
+    {
+        "name": "Avocado",
+        "caloriesPer100g": 160,
+        "proteinPer100g": 2,
+        "carbsPer100g": 9,
+        "fatsPer100g": 15
+    },
+    {
+        "name": "Olive Oil",
+        "caloriesPer100g": 884,
+        "proteinPer100g": 0,
+        "carbsPer100g": 0,
+        "fatsPer100g": 100
+    },
+    {
+        "name": "Almonds",
+        "caloriesPer100g": 579,
+        "proteinPer100g": 21,
+        "carbsPer100g": 22,
+        "fatsPer100g": 50
+    },
+    {
+        "name": "Lentils (cooked)",
+        "caloriesPer100g": 116,
+        "proteinPer100g": 9,
+        "carbsPer100g": 20,
+        "fatsPer100g": 0.4
+    },
+    {
+        "name": "Chickpeas (cooked)",
+        "caloriesPer100g": 164,
+        "proteinPer100g": 8.9,
+        "carbsPer100g": 27,
+        "fatsPer100g": 2.6
+    }
+]

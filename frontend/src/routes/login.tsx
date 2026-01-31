@@ -3,6 +3,8 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { useLogin } from "../hooks/auth";
+import { loginSchema } from "../services/auth";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/login")({
   beforeLoad: ({ context }) => {
@@ -14,12 +16,7 @@ export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
-export const signupSchema = z.object({
-  email: z.email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-export type LoginFormValues = z.infer<typeof signupSchema>;
+export type LoginFormValues = z.infer<typeof loginSchema>;
 
 function RouteComponent() {
   const {
@@ -27,9 +24,15 @@ function RouteComponent() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormValues>({
-    resolver: zodResolver(signupSchema),
+    resolver: zodResolver(loginSchema),
   });
-  const { mutate: login, isPending } = useLogin();
+  const { mutate: login, isPending, isSuccess } = useLogin();
+
+  useEffect(() => {
+    if (isSuccess) {
+      window.location.reload();
+    }
+  }, [isSuccess]);
 
   const onSubmit = async (data: LoginFormValues) => {
     login(data);
@@ -65,7 +68,7 @@ function RouteComponent() {
         )}
       </label>
       <button className="btn btn-primary" type="submit" disabled={isPending}>
-        {isPending ? "Signing up in…" : "Signup"}
+        {isPending ? "Loging in in…" : "Login"}
       </button>
     </form>
   );

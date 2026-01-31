@@ -2,7 +2,7 @@ import z from "zod";
 import api from ".";
 
 export const signupSchema = z.object({
-  username: z.string().min(3, "Username must be at least 3 characters"),
+  name: z.string().min(3, "Username must be at least 3 characters"),
   email: z.email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
@@ -10,7 +10,7 @@ export const signupSchema = z.object({
 export const signupService = async (data: unknown) => {
   try {
     const validatedData = signupSchema.parse(data);
-    const res = await api.post("/api/auth/sign-in/email", validatedData);
+    const res = await api.post("/api/auth/sign-up/email", validatedData);
 
     return res;
   } catch (error) {
