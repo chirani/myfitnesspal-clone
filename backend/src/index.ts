@@ -2,6 +2,9 @@ import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { auth } from "./auth.js";
 import { cors } from "hono/cors";
+import { db } from "./db/index.ts";
+import { foods } from "./db/schema.ts";
+import { like } from "drizzle-orm";
 
 const app = new Hono<{
   Variables: {
@@ -40,6 +43,17 @@ app.use(
     credentials: true,
   }),
 );
+
+app.get("/api/products", async (c) => {
+  const name = c.req.query("name");
+
+  const res = await db
+    .select()
+    .from(foods)
+    .where(like(foods.name, `%${name}%`));
+
+  return c.json({ data: res });
+});
 
 app.on(["POST", "GET"], "/api/auth/*", (c) => {
   return auth.handler(c.req.raw);

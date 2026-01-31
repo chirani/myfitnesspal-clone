@@ -1,16 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
-import {
-  loginSchema,
-  loginService,
-  logoutService,
-  signupService,
-} from "../services/auth";
+import { loginSchema, signupSchema } from "../services/auth";
 import { authClient } from "../auth";
 import type z from "zod";
 
+export type SignupFormValues = z.infer<typeof signupSchema>;
+
 export const useSignup = () => {
   return useMutation({
-    mutationFn: signupService,
+    mutationFn: async (data: SignupFormValues) =>
+      authClient.signUp.email({ ...data }),
   });
 };
 
@@ -25,6 +23,6 @@ export const useLogin = () => {
 
 export const useLogout = () => {
   return useMutation({
-    mutationFn: logoutService,
+    mutationFn: async () => await authClient.signOut(),
   });
 };
