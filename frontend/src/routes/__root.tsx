@@ -36,6 +36,9 @@ const Navbar = () => {
           ) : (
             <>
               <li>
+                <Link to="/foods/new">Add New Food</Link>
+              </li>
+              <li>
                 <button onMouseDown={() => logout()}>Logout</button>
               </li>
             </>

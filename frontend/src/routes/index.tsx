@@ -23,9 +23,10 @@ export const Component = () => {
             key={item?.id}
             className="border rounded-box p-4 w-full hover:opacity-50 cursor-pointer"
           >
-            <p>{item?.name}</p>
-            <p>Calories: {item?.caloriesPer100g}/100g</p>
-            <p>Protein: {item?.proteinPer100g}/100g</p>
+            <p className="text-lg font-bold">{item?.name}</p>
+            <p className="text-sm">Calories: {item?.caloriesPer100g}Cal/100g</p>
+            <p className="text-sm">Protein: {item?.proteinPer100g}g/100g</p>
+            <p className="text-sm">Carbs: {item?.carbsPer100g}</p>
           </div>
         ))}
       </div>

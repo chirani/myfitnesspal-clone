@@ -46,7 +46,28 @@ app.use(
 
 app.get("/api/products", async (c) => {
   const name = c.req.query("name");
-  console.log(name);
+
+  const res = await db
+    .select()
+    .from(foods)
+    .where(like(foods.name, `%${name}%`));
+
+  return c.json({ data: res });
+});
+
+type FoodType = typeof foods.$inferInsert;
+app.post("/api/products/new", async (c) => {
+  const bodyJson = await c.req.json();
+  const body = bodyJson as FoodType;
+
+  const res = await db.insert(foods).values([body]).returning();
+
+  return c.json({ data: res });
+});
+
+app.get("/api/products", async (c) => {
+  const name = c.req.query("name");
+
   const res = await db
     .select()
     .from(foods)
