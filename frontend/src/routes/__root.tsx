@@ -50,7 +50,7 @@ export const Route = createRootRoute({
   component: RootLayout,
   beforeLoad: async () => {
     const res = await authClient.getSession();
-    console.log("MY RES", res);
+
     return { session: res?.data };
   },
 });

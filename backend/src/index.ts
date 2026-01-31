@@ -46,7 +46,7 @@ app.use(
 
 app.get("/api/products", async (c) => {
   const name = c.req.query("name");
-
+  console.log(name);
   const res = await db
     .select()
     .from(foods)
