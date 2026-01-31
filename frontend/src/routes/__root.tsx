@@ -19,7 +19,7 @@ const Navbar = () => {
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
-          daisyUI
+          FoodTrackerOne
         </Link>
       </div>
       <div className="flex-none">
@@ -35,6 +35,9 @@ const Navbar = () => {
             </>
           ) : (
             <>
+              <li>
+                <Link to="/foods/schedule/new">Daily Schedule</Link>
+              </li>
               <li>
                 <Link to="/foods/new">Add New Food</Link>
               </li>

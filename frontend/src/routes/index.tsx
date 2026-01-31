@@ -27,6 +27,7 @@ export const Component = () => {
             <p className="text-sm">Calories: {item?.caloriesPer100g}Cal/100g</p>
             <p className="text-sm">Protein: {item?.proteinPer100g}g/100g</p>
             <p className="text-sm">Carbs: {item?.carbsPer100g}</p>
+            <p className="text-sm">Fats: {item?.fatsPer100g}</p>
           </div>
         ))}
       </div>

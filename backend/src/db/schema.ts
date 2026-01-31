@@ -26,3 +26,11 @@ export const foods = sqliteTable("foods", {
   carbsPer100g: real("carbs_per_100g").notNull(),
   fatsPer100g: real("fats_per_100g").notNull(),
 });
+
+export const foodList = sqliteTable("food_lists", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => user.id),
+  data: integer("date").notNull(),
+});
